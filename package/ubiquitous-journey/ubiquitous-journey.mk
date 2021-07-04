@@ -1,0 +1,20 @@
+UBIQUITOUS_JOURNEY_VERSION = 0.0.1
+UBIQUITOUS_JOURNEY_LICENSE = GPL-3.0
+UBIQUITOUS_JOURNEY_SITE = $(UBIQUITOUS_JOURNEY_PKGDIR)/src
+UBIQUITOUS_JOURNEY_SITE_METHOD = local
+
+define UBIQUITOUS_JOURNEY_BUILD_CMDS
+	$(MAKE) CC="$(TARGET_CC)" LD="$(TARGET_LD)" -C $(@D)
+endef
+
+define UBIQUITOUS_JOURNEY_INSTALL_TARGET_CMDS
+	$(INSTALL) -D -m 0755 $(@D)/ubiquitous-journey \
+		$(TARGET_DIR)/usr/bin/ubiquitous-journey
+endef
+
+define UBIQUITOUS_JOURNEY_INSTALL_INIT_SYSV
+	$(INSTALL) -D -m 0755 $(UBIQUITOUS_JOURNEY_PKGDIR)/S70ubiquitous-journey \
+		$(TARGET_DIR)/etc/init.d/S70ubiquitous-journey
+endef
+
+$(eval $(generic-package))

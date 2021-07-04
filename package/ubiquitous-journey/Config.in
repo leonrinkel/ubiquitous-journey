@@ -1,0 +1,7 @@
+config BR2_PACKAGE_UBIQUITOUS_JOURNEY
+    bool "ubiquitous-journey"
+    depends on BR2_PACKAGE_CA_CERTIFICATES
+    depends on BR2_PACKAGE_NTP
+    depends on BR2_PACKAGE_DOCKER_CLI
+    depends on BR2_PACKAGE_DOCKER_COMPOSE
+    depends on BR2_PACKAGE_DOCKER_ENGINE
